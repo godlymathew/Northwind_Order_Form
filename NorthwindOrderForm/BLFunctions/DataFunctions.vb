@@ -129,4 +129,18 @@ Public Class AppFunctions
         Return True
     End Function
 
+    Public Shared Function GetEmployees() As DataTable
+        Dim sql = "select EmployeeID, FirstName +' ' +LastName + '(' + Title + ')' as Title from [dbo].[Employees]"
+        Dim dSet As New DataSet
+        Dim dTable As DataTable
+        Using sqlCon As New SqlConnection(DataConnection.DbConnectionString)
+            Dim sqlCom As New SqlCommand(sql, sqlCon)
+            sqlCon.Open()
+            Dim sqlDataReader = sqlCom.ExecuteReader(CommandBehavior.CloseConnection)
+            dTable = New DataTable
+            dTable.Load(sqlDataReader)
+        End Using
+        Return dTable
+    End Function
+
 End Class

@@ -1,18 +1,17 @@
 ﻿Public Class FrmOrderDetails
 
     Private _FrmOrderList As FrmOrderList
+    Private FormMode As String = "New"
+    Private _OrderID As Long = 0
+    Private _EmployeeID As Int16
 
     Public Sub New(frm As FrmOrderList)
         InitializeComponent()
         _FrmOrderList = frm
+        _EmployeeID = _FrmOrderList.GetSelectedEmployee()
     End Sub
 
 
-    Private FormMode As String = "New"
-    Private _OrderID As Long = 0
-    Private Sub FrmOrderDetails_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-    End Sub
 
     Public Sub InitailizeForm()
         Dim dTables = AppFunctions.GetOrderDetailsDropDowns()
@@ -72,7 +71,7 @@
 
             sqlsParams = New Dictionary(Of String, String) From {
             {"CustomerID", SqlStringData(CbCustomer.SelectedValue)},
-            {"EmployeeID", 5},
+            {"EmployeeID", _EmployeeID}, '
             {"OrderDate", SqlStringData(DtOrderDate.Value.ToString("yyyy/MM/dd"))},
             {"RequiredDate", SqlStringData(DtRequiredDate.Value.ToString("yyyy/MM/dd"))},
             {"ShippedDate", SqlStringData(DtShippedDate.Value.ToString("yyyy/MM/dd"))},
@@ -99,7 +98,7 @@
     End Sub
 
     Private Function SqlStringData(value As String) As String
-        Return "'" + value + "'"
+        Return "'" + value.Replace("'", "") + "'"
     End Function
 
     Private Sub ClearAll()

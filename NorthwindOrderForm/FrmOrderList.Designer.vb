@@ -27,6 +27,8 @@ Partial Class FrmOrderList
         Me.BtNewOrder = New System.Windows.Forms.Button()
         Me.Btrefresh = New System.Windows.Forms.Button()
         Me.BtEditOrder = New System.Windows.Forms.Button()
+        Me.CbEmployee = New System.Windows.Forms.ComboBox()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         CType(Me.DgvOrders, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -59,7 +61,7 @@ Partial Class FrmOrderList
         '
         'BtNewOrder
         '
-        Me.BtNewOrder.Location = New System.Drawing.Point(15, 12)
+        Me.BtNewOrder.Location = New System.Drawing.Point(479, 10)
         Me.BtNewOrder.Name = "BtNewOrder"
         Me.BtNewOrder.Size = New System.Drawing.Size(75, 23)
         Me.BtNewOrder.TabIndex = 1
@@ -68,7 +70,7 @@ Partial Class FrmOrderList
         '
         'Btrefresh
         '
-        Me.Btrefresh.Location = New System.Drawing.Point(188, 12)
+        Me.Btrefresh.Location = New System.Drawing.Point(652, 10)
         Me.Btrefresh.Name = "Btrefresh"
         Me.Btrefresh.Size = New System.Drawing.Size(75, 23)
         Me.Btrefresh.TabIndex = 2
@@ -77,18 +79,39 @@ Partial Class FrmOrderList
         '
         'BtEditOrder
         '
-        Me.BtEditOrder.Location = New System.Drawing.Point(96, 12)
+        Me.BtEditOrder.Location = New System.Drawing.Point(560, 10)
         Me.BtEditOrder.Name = "BtEditOrder"
         Me.BtEditOrder.Size = New System.Drawing.Size(86, 23)
         Me.BtEditOrder.TabIndex = 3
         Me.BtEditOrder.Text = "Edit Order"
         Me.BtEditOrder.UseVisualStyleBackColor = True
         '
+        'CbEmployee
+        '
+        Me.CbEmployee.BackColor = System.Drawing.SystemColors.Window
+        Me.CbEmployee.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.CbEmployee.FormattingEnabled = True
+        Me.CbEmployee.Location = New System.Drawing.Point(80, 12)
+        Me.CbEmployee.Name = "CbEmployee"
+        Me.CbEmployee.Size = New System.Drawing.Size(393, 21)
+        Me.CbEmployee.TabIndex = 4
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(12, 15)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(53, 13)
+        Me.Label1.TabIndex = 5
+        Me.Label1.Text = "Employee"
+        '
         'FrmOrderList
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(931, 482)
+        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.CbEmployee)
         Me.Controls.Add(Me.BtEditOrder)
         Me.Controls.Add(Me.Btrefresh)
         Me.Controls.Add(Me.BtNewOrder)
@@ -101,6 +124,7 @@ Partial Class FrmOrderList
         Me.GroupBox1.ResumeLayout(False)
         CType(Me.DgvOrders, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
@@ -109,4 +133,6 @@ Partial Class FrmOrderList
     Friend WithEvents BtNewOrder As Button
     Friend WithEvents Btrefresh As Button
     Friend WithEvents BtEditOrder As Button
+    Friend WithEvents CbEmployee As ComboBox
+    Friend WithEvents Label1 As Label
 End Class

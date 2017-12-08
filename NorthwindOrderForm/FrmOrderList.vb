@@ -1,6 +1,7 @@
 ﻿Public Class FrmOrderList
     Private Sub FrmOrderList_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         InitializeOrderForm()
+        LoadEmployees()
     End Sub
 
     Public Sub InitializeOrderForm()
@@ -9,6 +10,9 @@
             DgvOrders.DataSource = dTable
         End If
     End Sub
+    Public Function GetSelectedEmployee() As Int16
+        Return CInt(CbEmployee.SelectedValue)
+    End Function
 
     Private Sub DgvOrders_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles DgvOrders.CellDoubleClick
         If e.RowIndex >= 0 AndAlso e.ColumnIndex >= 0 Then
@@ -46,4 +50,9 @@
         frm.ShowDialog()
     End Sub
 
+    Private Sub LoadEmployees()
+        CbEmployee.DataSource = AppFunctions.GetEmployees()
+        CbEmployee.DisplayMember = "Title"
+        CbEmployee.ValueMember = "EmployeeID"
+    End Sub
 End Class
